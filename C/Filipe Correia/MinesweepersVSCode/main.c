@@ -21,28 +21,6 @@ neste caso a vari�vel randLinha vai receber um valor aleat�rio entre 1 e 6
 
 ************************************************************************************/
 
-void floodFillUtil(int sizeX, int sizeY, char logic[sizeX][sizeY], char visual[sizeX][sizeY], int x, int y, char oldTile, char newTile)
-{
-    if (x < 0 || x >= sizeX || y < 0 || y >= sizeY)
-        return;
-    if (logic[x][y] != oldTile)
-    {
-        return;
-    }
-    logic[x][y] = newTile;
-    visual[x][y] = checkTilesAround(sizeX, sizeY, logic, x, y, 'M');
-    floodFillUtil(sizeX, sizeY, logic, visual, (x + 1), y, oldTile,newTile);
-    floodFillUtil(sizeX, sizeY, logic, visual, (x - 1), y, oldTile,newTile);
-    floodFillUtil(sizeX, sizeY, logic, visual, x, (y + 1), oldTile,newTile);
-    floodFillUtil(sizeX, sizeY, logic, visual, x, (y - 1), oldTile,newTile);
-}
-
-void floodFill(int sizeX, int sizeY, char logic[sizeX][sizeY], char visual[sizeX][sizeY], int x, int y, char newTile)
-{
-    char oldTile = visual[x][y];
-    floodFillUtil(sizeX, sizeY, logic, visual, x, y, oldTile, newTile);
-}
-
 char checkTilesAround(int sizeX, int sizeY, char logic[sizeX][sizeY], int x, int y, char tile)
 {
     int tilesFound = 0;
@@ -203,17 +181,37 @@ char checkTilesAround(int sizeX, int sizeY, char logic[sizeX][sizeY], int x, int
     //convert int to char
     char m[2];
     if (tilesFound == 0)
-        m[0] = 'o';
+        m[0] = '0';
     else
         m[0] = tilesFound + '0';
     return m[0];
 }
 
-void createBoard(int sizeX, int sizeY, char visual[sizeX][sizeY], char logic[sizeX][sizeY], char fullboard[sizeX][sizeY],int mineNumber)
+void floodFill(int sizeX, int sizeY, char logic[sizeX][sizeY], char visual[sizeX][sizeY], int x, int y, char oldTile)
+{
+    if (x < 0 || x >= sizeX || y < 0 || y >= sizeY)
+        return;
+    if (logic[x][y] != oldTile)
+        return;
+    visual[x][y] = checkTilesAround(sizeX,sizeY,logic,x,y,'M');
+    floodFill(sizeX, sizeY, logic, visual, (x + 1), y, oldTile);
+    floodFill(sizeX, sizeY, logic, visual, (x - 1), y, oldTile);
+    floodFill(sizeX, sizeY, logic, visual, x, (y + 1), oldTile);
+    floodFill(sizeX, sizeY, logic, visual, x, (y - 1), oldTile);
+}
+/*
+void floodFill(int sizeX, int sizeY, char logic[sizeX][sizeY], char visual[sizeX][sizeY], int x, int y)
+{ 
+    char oldTile = visual[x][y];
+    floodFillUtil(sizeX, sizeY, logic, visual, x, y, oldTile);
+}*/
+
+void createBoard(int sizeX, int sizeY, char visual[sizeX][sizeY], char logic[sizeX][sizeY], char fullboard[sizeX][sizeY], int mineNumber)
 {
     int x;
     int y;
     int n;
+
     //Generates n random mines and overwrites empty slots
     srand((unsigned)time(NULL));
     for (n = 0; n < mineNumber; n++)
@@ -233,6 +231,8 @@ void createBoard(int sizeX, int sizeY, char visual[sizeX][sizeY], char logic[siz
         for (y = 0; y < sizeY; y++)
         {
             visual[x][y] = '-';
+            if (logic[x][y] != 'M')
+                logic[x][y] = '-';
             fullboard[x][y] = logic[x][y];
         }
     }
@@ -258,7 +258,8 @@ void delay(int seconds)
 {
     int ms = 1000 * seconds;
     clock_t start_time = clock();
-    while (clock() < start_time + ms);
+    while (clock() < start_time + ms)
+        ;
 }
 
 int main()
@@ -269,14 +270,14 @@ int main()
     char visual[sizeX][sizeY];
     char logic[sizeX][sizeY];
     char fullBoard[sizeX][sizeY];
-    int mineNumber = 6;
+    int mineNumber = 10;
 
     //inputs variabes
     int n = 0;
     int alive = 0;
     int x, y;
 
-    createBoard(sizeX, sizeY, visual, logic, fullBoard,mineNumber);
+    createBoard(sizeX, sizeY, visual, logic, fullBoard, mineNumber);
 
     while (alive == 0)
     {
@@ -285,14 +286,16 @@ int main()
         printBoard(sizeX, sizeY, logic);
         printf("\nInput");
         scanf("%d %d", &x, &y);
-        visual[x][y] = logic[x][y];
-        if (visual[x][y] == 'M'){
+        if (logic[x][y] == 'M')
+        {
             alive = 1;
         }
-        if (visual[x][y] == '0') {
-            floodFill(sizeX, sizeY, logic, visual, x, y, '0');
+        if (logic[x][y] == '-')
+        {
+            floodFill(sizeX, sizeY, logic, visual, x, y, logic[x][y]);
         }
     }
+    printBoard(sizeX, sizeY, fullBoard);
     //Prestige aka Grand Finale
     for (n = 0; n < 5; n++)
     {
