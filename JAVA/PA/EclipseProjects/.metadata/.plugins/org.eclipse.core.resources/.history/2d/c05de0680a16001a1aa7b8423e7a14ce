@@ -1,0 +1,14 @@
+
+public class Playlist {
+	private String name;
+	private int capacity;
+	private String dataCriacao;
+	private Musica[] musicas;
+	private int nrMusicas;
+	
+	public Playlist(String name, int capacity, String dataCriacao){
+		this.name = name;
+		this.capacity = capacity;
+		this.dataCriacao = dataCriacao;
+	}
+}

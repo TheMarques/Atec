@@ -1,0 +1,50 @@
+package atec;
+
+import atec.flj.mat.NumberInt;
+import atec.flj.mat.functions.Mdc;
+import atec.flj.mat.functions.Mmc;
+
+import java.util.Scanner;
+
+import atec.flj.mat.*;
+
+public class PackageTest{
+	
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("\n\tInsert two Fractions:");
+		System.out.println("\nInsert Fraction 1 numerator:");
+		NumberInt n1 = new NumberInt(scan.nextInt());
+		System.out.println("\nInsert Fraction 1 denominator:");
+		NumberInt d1 = new NumberInt(scan.nextInt());
+		System.out.println("\nInsert Fraction 2 numerator:");
+		NumberInt n2 = new NumberInt(scan.nextInt());
+		System.out.println("\nInsert Fraction 2 denominator:");
+		NumberInt d2 = new NumberInt(scan.nextInt());
+		
+		System.out.println("\nPrinting results for the sum of the input Fractions:");
+		
+		Fraction f1 = new Fraction(n1 , d1);
+		Fraction f2 = new Fraction(n2 , d2);
+		
+		System.out.println("\n");
+		System.out.println(f1);
+		System.out.println(f2);
+		System.out.println("mmc is : " + Mmc.minMultiploComun(d1, d2));
+		
+		Fraction f3 = f1.sum(f2);
+		System.out.println(f3);
+		
+		
+		NumberInt f3mdc = Mdc.maxDivisorComum(f3.getNumerator(), f3.getDenominator());
+		
+		if (f3.getNumerator().getNumber() % f3mdc.getNumber() == 0 && f3.getDenominator().getNumber() % f3mdc.getNumber() == 0){
+			Fraction f4 = new Fraction(new NumberInt(f3.getNumerator().getNumber() / f3mdc.getNumber()) , new NumberInt(f3.getDenominator().getNumber() / f3mdc.getNumber()));
+			System.out.println("\nPrinting results for the simplification of the Fraction:");
+			System.out.println(f4);
+		}
+		
+	}
+}

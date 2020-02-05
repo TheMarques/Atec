@@ -1,0 +1,50 @@
+
+public class Bank {
+	
+		private ContaBancaria[] contas;
+		private int nContas = 0;
+		
+		public void createAccount(String n, String s)
+		{
+			contas[nContas++] = new ContaBancaria(n,s);
+		}
+		
+		public void deposit(String s, double a){
+			for (int i = 0; i < contas.length; i++) {
+				if (contas[i].getSerial() == s){
+				}
+			}
+		}
+		
+		public double cashOut (String s, double a){
+			
+			return a;
+		}
+		
+		public void transfer(String s1 , String s2, double a)
+		{
+			
+		}
+		
+		public ContaBancaria findAccount(String s)
+		{
+			for (int i = 0; i < contas.length; i++) {
+				if (contas[i].getSerial() == s){
+					return contas[i];
+				}
+				else{
+					return null;
+				}
+			}
+
+
+		}
+		
+		public String toString(){
+			String text = "\nThe bank has : " + nContas + ".";
+			for (int i = 0; i < contas.length; i++) {
+				text += "\nAccount # "+ i + " " + contas[i].toString();
+			}
+			return text;
+		}
+}

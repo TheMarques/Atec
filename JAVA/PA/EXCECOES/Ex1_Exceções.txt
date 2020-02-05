@@ -1,0 +1,26 @@
+Crie um programa para calcular o resultado da seguinte equação:
+
+A*x^2 + B*x + C= 0 
+
+O seu programa deverá incluir o seguinte método.	
+
+public static double root(double A, double B, double C) 
+                                 throws IllegalArgumentException {
+                 
+            // (Throws (lança) uma exceção se  A == 0 ou B*B-4*A*C < 0.)
+         if (A == 0) {
+           throw new IllegalArgumentException("A não pode ser zero.");
+         }
+         else {
+            double disc = B*B - 4*A*C;
+            if (disc < 0)
+               throw new IllegalArgumentException("Discriminante < zero.");
+            return  (-B + Math.sqrt(disc)) / (2*A);
+         }
+     }
+
+
+O seu programa deve pedir ao utilizador os valores de A, B e C. Deve chamar o metodo "root"(raiz) para calcular a solução para 
+a equação. Se não acontecer nenhum erro, o programa deverá imprimir a solução. Caso contrário, o programa deverá fazer a capturar (catch) 
+do erro, e imprimir a mensagem de erro respetiva, recorrendo ao uso do metodo getMessage() da classe throwable. 
+

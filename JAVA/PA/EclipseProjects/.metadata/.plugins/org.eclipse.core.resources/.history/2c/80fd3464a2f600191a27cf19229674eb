@@ -1,0 +1,11 @@
+
+public class Bank {
+	
+		private ContaBancaria[] contas;
+		private int nContas;
+		
+		public createAccount(String n, String s)
+		{
+			
+		}
+}

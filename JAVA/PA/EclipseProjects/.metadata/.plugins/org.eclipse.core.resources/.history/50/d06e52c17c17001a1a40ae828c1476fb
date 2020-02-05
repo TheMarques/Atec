@@ -1,0 +1,10 @@
+
+public class Empregado {
+
+	private String numeroEmpregado;
+	private String nome;
+	private Genero genero;
+	private double salario;
+	private String departamento;
+	private int numeroFilhos;
+}

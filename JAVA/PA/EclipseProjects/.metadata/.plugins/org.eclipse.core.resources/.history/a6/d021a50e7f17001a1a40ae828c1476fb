@@ -1,0 +1,45 @@
+
+public class Empresa {
+	private String nomeDaEmpresa;
+	private String nomeDoCEO;
+	private double capitalSocial;
+	private Empregado[] listaDeEmpregados;
+	private int numeroTotalDeEmpregados = 0;
+	private int numeroTotalDeEmpresas = 0;
+	
+	public Empresa(String nomeDaEmpresa, String nomeDoCEO, double capitalSocial) {
+		this.nomeDaEmpresa = nomeDaEmpresa;
+		this.nomeDoCEO = nomeDoCEO;
+		this.capitalSocial = capitalSocial;
+		numeroTotalDeEmpresas++;
+	}
+
+	public Empresa(String nomeDaEmpresa, double capitalSocial) {
+		this.nomeDaEmpresa = nomeDaEmpresa;
+		this.capitalSocial = capitalSocial;
+		numeroTotalDeEmpresas++;
+	}
+	
+	public void contrataEmpregado(Empregado emp){
+		if (numeroTotalDeEmpregados < listaDeEmpregados.length){
+			listaDeEmpregados[numeroTotalDeEmpregados++] = emp;
+		}
+	}
+	
+	public int aumentaNumeroDeFilhos(String numEmpregado, int numFilhos){
+		for (Empregado emp : listaDeEmpregados){
+			if (numEmpregado.equals(emp.getNumeroEmpregado())){
+				emp.aumentaNumeroDeFilhos(numFilhos);
+				return emp.getNumeroDeFilhos();
+			}
+		}
+		System.out.println("Error Code 01");
+		return 0;
+	}
+	
+	public int obtemNumTotalEmpresas(){
+		return numeroTotalDeEmpresas;
+	}
+	
+	
+}

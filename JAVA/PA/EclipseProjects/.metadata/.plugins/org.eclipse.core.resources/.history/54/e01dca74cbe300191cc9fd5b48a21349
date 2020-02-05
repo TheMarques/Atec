@@ -1,0 +1,19 @@
+
+public class Pessoa {
+
+		String name;
+		double weight;
+		double height;
+		
+		public Pessoa(String n, double w, double h)
+		{
+			name = n;
+			weight = w;
+			height = h;
+		}
+		
+		public double calculateIMC(double weight, double height)
+		{
+			return (weight / (height * height));
+		}
+}

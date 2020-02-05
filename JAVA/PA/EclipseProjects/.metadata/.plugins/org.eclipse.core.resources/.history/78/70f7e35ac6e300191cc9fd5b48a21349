@@ -1,0 +1,21 @@
+
+class Automovel {
+
+	// Attributes
+	String paint;
+	String plate;
+	int km;
+	int doorNumber;
+	
+	// Methods
+	
+	// Construct
+	public static CreateCar{
+		
+	}
+	
+	public static changePaint(String newPaint)
+	{
+		paint = newPaint;
+	}
+}

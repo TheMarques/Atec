@@ -1,0 +1,45 @@
+Imagine um armazém com produtos. Seguindo as indicações referidas de seguida, defina um programa em 
+Java que represente esse armazém e os respetivos produtos.
+
+Escreva uma classe em Java chamada Produto.
+
+A sua classe deverá possuir:
+a)os atributos
+
+  1. nome(String)
+  2. qtdAtual(int)
+  3. stockqtdMinima(int).
+
+b)um construtor sem parâmetros e um outro contendo os parâmetros: nome,qtdAtual,stockqtdMinima.
+
+c)os métodos:
+
+  1. void alteraNome(String nome)
+  2. void alteraQtdMinima(int qtdMinima)
+  3. void repor(int qtd)
+  4. void darBaixa(int qtd)
+  5. String toString()
+  6. boolean necessitaRepor()
+
+Os atributos qtdAtual e qtdMinima nunca deverão ser negativos.
+O método repor aumenta qtdAtual de acordo com o parâmetro qtd.
+O método darBaixa diminui qtdAtual de acordo com o parâmetro qtd.
+O método toString retorna uma String contendo o nome do produto,sua quantidade mínima,e a sua quantidade atual.
+O método necessitaRepor retorna true caso a quantidade atual seja menor ou igual à quantidade mínima e
+false,caso contrário.
+
+11.Escreva uma  classe chamada Armazem. 
+
+a) Atributos
+  1. Um array de produtos
+  2. Um contador do numero de produtos no armazem
+
+b) Métodos
+   1. Construtor(es)
+   2. movimentoEntrada(String nome, int qtd)
+   3. movimentoSaida(String nome, int qtd)
+   4. String toString()
+
+Caso o produto não exista no armazém, deverá adicioná-lo no respetivo array que representa o seu armazém de produtos (primeiro atributo desta classe).
+
+12. Escreva uma classe de nome Main, contendo o metodo main, e teste o seu programa criando um Armazem, vários produtos e chamando os metodos que criou para comprovar que funcionam.

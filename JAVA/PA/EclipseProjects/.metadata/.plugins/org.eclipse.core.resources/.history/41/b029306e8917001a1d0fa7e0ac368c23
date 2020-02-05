@@ -1,0 +1,13 @@
+
+public class Vendedor implements ISalarial{
+
+	private int id;
+	private String nome;
+	private double salarioFixo;
+	private double valorVendas;
+	private double percentagemComissao;
+	
+	public double calculaSalario() {
+		return (salarioFixo + valorVendas) * percentagemComissao;
+	}
+}

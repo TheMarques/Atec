@@ -1,0 +1,62 @@
+import java.util.Scanner;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+
+		String color;
+		int s = 0;
+		double height;
+		double width;
+		
+		do{
+			System.out.println("\n************************************************");
+			System.out.println("\n\tWelcome to the Mathlab!");
+			System.out.println("\nSelect one of the following options to continue.");
+			System.out.println("\n1. Create Rectangle");
+			System.out.println("\n2. Create Triangle");
+			System.out.println("\n3. Exit Mathlab\n");
+			s = scan.nextInt();
+			
+			switch (s) {
+			case 1 : 
+				System.out.println("\n\tCreating Rectangle");
+				System.out.println("\nWhats the height?");
+				height = scan.nextDouble();
+				System.out.println("\nWhats the width?");
+				width = scan.nextDouble();
+				scan.nextLine();
+				System.out.println("\nWhats the color?");
+				color = scan.nextLine();
+				Rectangle r = new Rectangle(4,color,width,height);
+				System.out.println("\n"+r);
+				break;
+			case 2 : 
+				System.out.println("\n\tCreating Triangle");
+				System.out.println("\nWhats the height?");
+				height = scan.nextDouble();
+				System.out.println("\nWhats the width?");
+				width = scan.nextDouble();
+				System.out.println("\nWhats the color?");
+				color = scan.nextLine();
+				System.out.println(color);
+				Triangle t = new Triangle(3,color,width,height);
+				System.out.println(t);
+				break;
+			
+			case 3 :
+				System.out.println("\nExiting Mathlab...");
+				break;
+
+			default :
+				System.out.println("\nChoose a number from the list.");
+				break;
+			}
+			
+		}while (s != 3);		
+			
+		scan.close();
+	}
+}

@@ -1,0 +1,53 @@
+
+public class Warehouse {
+
+	private Product[] items;
+	private int itemCount;
+	
+	public Warehouse (){
+		
+	}
+	
+	public void addItem(Product item){
+		if (findItem(item) == null){
+		items[itemCount++] = item;
+		}
+	}
+	
+	public void addStock(Product item, int quantity){
+		if (findItem(item) != null){
+			item.addStock(quantity);
+		}
+	}
+	
+	public void removeStock(Product item, int quantity){
+		if (findItem(item).checkStock() > quantity){
+			item.removeStock(quantity);
+		}
+	}
+	
+	private Product findItem(Product item){
+		if (itemCount == 1){
+			return item;
+		}
+		
+		for (int i = 0; i < itemCount; i++) {
+			if (items[i] == item){
+				return item;
+			}
+		}
+		return null;
+	}
+	
+	public String toString(){
+		String text = "The Warehouse contains : ";
+		if (items == null){
+			return text += " no items.";
+		}
+		for (int i = 0; i < items.length; i++) {
+			text += items[i].toString();
+		}
+		return text;
+	}
+	
+}

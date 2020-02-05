@@ -1,0 +1,29 @@
+
+class Automovel {
+
+	// Attributes
+	String paint;
+	String plate;
+	int doorNumber;
+	double km;
+	
+	// Methods
+	
+	// Construct, attributes with same name require "this."
+	public Automovel(String paint, String plate, int doorNumber, int km){
+		this.paint = paint;
+		this.plate = plate;
+		this.doorNumber = doorNumber;
+		this.km = km;
+	}
+	
+	public static void changePaint(String oldPaint, String newPaint)
+	{
+		oldPaint = newPaint;
+	}
+	
+	public static void changeKm(double km, double newKm)
+	{
+		km = newKm;
+	}
+}

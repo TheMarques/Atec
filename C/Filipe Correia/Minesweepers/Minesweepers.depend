@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1580152024 source:d:\tpsi0919 - diogo marques\onedrive - atec - academia de formação\c\minesweepers\minefield.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

@@ -1,0 +1,68 @@
+package atec.flj.mat;
+
+import atec.flj.mat.functions.Mmc;
+
+public class Fraction {
+	
+	private NumberInt numerator;
+	private NumberInt denominator;
+	
+	public Fraction(NumberInt n1, NumberInt n2)
+	{
+		numerator = n1;
+		denominator = n2;
+	}
+	
+	public Fraction sum(Fraction f2)
+	{
+		NumberInt multi = Mmc.minMultiploComun(this.getDenominator(), f2.getDenominator());
+		System.out.println(multi);
+		
+		if (this.getDenominator().getNumber() != f2.getDenominator().getNumber())
+		{
+			// Multi * Denominator
+			this.setDenominator(new NumberInt((this.getDenominator().getNumber() / multi.getNumber()) * f2.getDenominator().getNumber()));
+			f2.setDenominator(new NumberInt(f2.getDenominator().getNumber() * multi.getNumber()));
+		}
+		// Multi * Numerator
+		this.setNumerator(new NumberInt(this.getNumerator().getNumber() * multi.getNumber()));
+		f2.setNumerator(new NumberInt(f2.getNumerator().getNumber() * multi.getNumber()));
+		
+		System.out.println("\n");
+		System.out.println(this);
+		System.out.println("\n");
+		System.out.println(f2);
+		System.out.println("\n");
+		// Sums Functions
+		NumberInt numerator = new NumberInt(this.getNumerator().getNumber() + f2.getNumerator().getNumber());
+		NumberInt denominator = new NumberInt(this.getDenominator().getNumber());
+
+		Fraction f = new Fraction(numerator,denominator);
+		System.out.println("\n");
+		System.out.println(f);
+		System.out.println("\n");
+		return f;
+	}
+	
+	public NumberInt getNumerator(){
+		return numerator;
+	}
+	
+	public void setNumerator(NumberInt numerator)
+	{
+		this.numerator = numerator;
+	}
+	
+	public NumberInt getDenominator(){
+		return denominator;
+	}
+	
+	public void setDenominator(NumberInt denominator)
+	{
+		this.denominator = denominator;
+	}
+
+	public String toString(){
+		return "Numerator " + getNumerator() + ", Denominator " + getDenominator();
+	}
+}

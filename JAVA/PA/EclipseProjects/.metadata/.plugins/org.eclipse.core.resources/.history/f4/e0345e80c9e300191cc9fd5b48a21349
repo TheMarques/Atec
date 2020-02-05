@@ -1,0 +1,27 @@
+
+public class TesteAutomovel {
+
+	public static void main(String[] args) {
+
+		Automovel carAtec = new Automovel("Blue", "AA-BB-CC", 5, 0);
+		
+		WriteLine("The plate on atec's car is "
+		+ carAtec.plate + "\nwhich has "
+		+ carAtec.doorNumber + "\n color "
+		+ carAtec.paint + "\n km : "
+		+ carAtec.km );
+		
+		Automovel carA = new Automovel("Black", "BA-EB-PC", 2, 10000);
+		
+		WriteLine("\nThe plate on atec's car is "
+		+ carA.plate + "\nwhich has "
+		+ carA.doorNumber + "\ncolor "
+		+ carA.paint + "\n km : "
+		+ carA.km );
+	}
+	
+	public static void WriteLine(String textToDisplay){
+		System.out.println(textToDisplay);
+	}
+
+}

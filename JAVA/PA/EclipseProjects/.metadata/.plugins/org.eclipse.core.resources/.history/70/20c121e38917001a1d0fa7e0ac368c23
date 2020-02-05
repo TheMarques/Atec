@@ -1,0 +1,15 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		ISalarial[] salarios = new ISalarial[2];
+		
+		//(String numeroEmpregado, String nome, double salario, String departamento, int numeroFilhos)
+		Empregado empregado = new Empregado("015283_2019", "Diogo", 1000.50, "IT", 0);
+		//(int id, String nome, double salarioFixo, double valorVendas, double percentagemComissao)
+		Vendedor vendedor = new Vendedor();
+		
+	}
+
+}

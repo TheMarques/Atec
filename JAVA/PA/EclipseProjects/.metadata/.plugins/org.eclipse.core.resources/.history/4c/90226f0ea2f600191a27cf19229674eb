@@ -1,0 +1,43 @@
+
+public class ContaBancaria {
+	private String name;
+	private String owner;
+	private double ammount;
+	
+	public ContaBancaria(String n, String o, double a){
+		name = n;
+		owner = o;
+		ammount = a;
+	}
+	
+
+	
+	public double cashIn(double a)
+	{	
+		return ammount += a;
+	}
+	public void cashOut(double a)
+	{
+		ammount -= a;
+	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public void setName(String n){
+		name = n;
+	}
+	
+	public String getOwner(){
+		return owner;
+	}
+	
+	public void setOwner(String o){
+		owner = o;
+	}
+	
+	public String toString(){
+		return "\nThe bank account " + name + ", is owned by " + owner + ", and currently has " + ammount + "$.";
+	}
+}

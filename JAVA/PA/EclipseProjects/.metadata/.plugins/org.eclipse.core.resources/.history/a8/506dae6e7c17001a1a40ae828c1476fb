@@ -1,0 +1,11 @@
+
+public enum Genero {
+	MASCULINO, FEMININO;
+	
+	private char abreviaturaGenero;
+	
+	abreviaturaGenero = 'M';
+	public char getAbreviaturaGenero(){
+		return abreviaturaGenero;
+	}
+}

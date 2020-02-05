@@ -1,0 +1,70 @@
+
+public class Vendedor implements ISalarial{
+
+	private int id;
+	private String nome;
+	private double salarioFixo;
+	private double valorVendas;
+	private double percentagemComissao;
+	
+	public Vendedor(int id, String nome, double salarioFixo, double valorVendas, double percentagemComissao) {
+		this.id = id;
+		this.nome = nome;
+		this.salarioFixo = salarioFixo;
+		this.valorVendas = valorVendas;
+		this.percentagemComissao = percentagemComissao;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public double getSalarioFixo() {
+		return salarioFixo;
+	}
+
+	public void setSalarioFixo(double salarioFixo) {
+		this.salarioFixo = salarioFixo;
+	}
+	
+	public double getValorVendas() {
+		return valorVendas;
+	}
+
+	public void setValorVendas(double valorVendas) {
+		this.valorVendas = valorVendas;
+	}
+
+	public double getPercentagemComissao() {
+		return percentagemComissao;
+	}
+
+	public void setPercentagemComissao(double percentagemComissao) {
+		this.percentagemComissao = percentagemComissao;
+	}
+
+	public double calculaSalario() {
+		return (salarioFixo + valorVendas) * percentagemComissao;
+	}
+
+	@Override
+	public String toString() {
+		return "Vendedor numero " + getId() + ", de nome " + getNome() + ", com um salario de " + getSalarioFixo()
+				+ ", valor de vendas de " + getValorVendas() + ", percentagem de comissao de " + getPercentagemComissao()
+				+ ", resultando num salario de " + calculaSalario();
+	}
+	
+	
+}

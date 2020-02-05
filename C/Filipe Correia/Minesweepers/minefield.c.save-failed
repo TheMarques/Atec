@@ -1,0 +1,238 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+/***********************************************************************************
+Jogo MineField
+****************
+1-Criar o tabuleiro (Uma matriz de 6 por 6)
+2-Espalhar aleatoriamente 5 minas.
+        Exemplo:
+        srand((unsigned)time(NULL));
+        randLinha = 1 + (rand()%6);
+neste caso a variável randLinha vai receber um valor aleatório entre 1 e 6
+3-Escolher a casa através de coordenadas (linha,coluna)
+4-Após cada jogada verificar todas as casas e detectar:
+        - Se existe uma mina na casa escolhida, termina o jogo
+        - Se não existir mina, dar informação da quantidade de minas nas casa adjacentes.
+5-As casas poderão ser identificadas com um M para marcar as minas.
+
+
+
+************************************************************************************/
+
+// Global Variables
+char board[6][6];
+char logic[6][6];
+int mines[2][5];
+int x;
+int y;
+int n;
+int m;
+int alive;
+
+void createBoard()
+{
+    //Add '-' to empty slots
+    for(x = 0; x < 6; x++)
+    {
+        for(y = 0; y < 6 ; y++)
+        {
+            board[x][y] = '-';
+        }
+    }
+
+    //Generates 5 random mines and overwrites empty slots
+    m = 0;
+    srand((unsigned)time(NULL));
+    for (n = 0; n < 5; n++)
+    {
+        x = 0 + (rand()%5);
+        y = 0 + (rand()%5);
+        printf("\nMine Added in %d\t%d",     x,    y);
+        mines[m][n] = x;
+        mines[m+1][n] = y;
+        logic[x][y] = '*';
+    }
+}
+
+//Prints board
+void printBoard()
+{
+    for(x = 0; x < 6; x++)
+    {
+        printf("\n");
+        for(y=0; y <6; y++)
+        {
+            printf("%c\t",board[x][y]);
+        }
+    }
+}
+
+void MeteCasa()
+{
+    printf("\t\tx: %d\t y: %d\n", x,y);
+    m = 0;
+    for(n = 0; n < 5; n++)
+    {
+        if (mines[m][n] == x && mines[m+1][n] == y)
+        {
+            board[x][y] = 'M';
+            alive = 1;
+        }
+    }
+
+    if (board[x][y] == '-')
+    {
+        board[x][y] = 'x';
+    }
+}
+
+void checkBombs()
+{
+    m = 0;
+    for(x = 0; x < 6; x++)
+    {
+        for(y = 0; y < 6; y++)
+        {
+            if (board[x][y] == '-')
+            {
+                for (n = 0; n < 5; n++)
+                {
+                    if (mines[m][n] == x && mines[m+1][n] == y)
+                    {
+                        board[x][y] = '1';
+                    }
+                }
+            }
+        }
+
+
+    }
+}
+
+int check_for_nearby_mines(int r_select, int c_select)
+{
+    int BOARD_SIZE = 6;
+    int nearby_mine_count = 0;
+
+
+    if(board[r_select][c_select] == 'M')
+    {
+        return -1;
+    }
+
+    // Check for mines below and to the right.
+    if(r_select < (BOARD_SIZE - 1) && c_select < (BOARD_SIZE - 1))
+    {
+        // Check for mine below
+        if(logic[r_select + 1][c_select] == '*')
+            nearby_mine_count++;
+        // Check for mine to the right.
+        if(logic[r_select][c_select + 1] == '*')
+            nearby_mine_count++;
+        // Check for mine diagonal-dright.
+        if(logic[r_select + 1][c_select + 1] == '*')
+            nearby_mine_count++;
+
+        // Check whether the columns to the left can be checked
+        if(c_select != 0)
+        {
+            // Check for mine diagonal-dleft
+            if(logic[r_select + 1][c_select - 1] == '*')
+                nearby_mine_count++;
+            // Check for mine to the left
+            if(logic[r_select][c_select - 1] == '*')
+                nearby_mine_count++;
+        }
+        // Check whether the rows above can be checked
+        if(r_select != 0)
+        {
+            // Check for mine above
+            if(logic[r_select - 1][c_select] == '*')
+                nearby_mine_count++;
+            // Check for mine diagonal-uright
+            if(logic[r_select - 1][c_select + 1] == '*')
+                nearby_mine_count++;
+            // Check whether columns to the left can be checked
+            if(c_select != 0)
+            {
+                // Check for mine diagonal-uleft
+                if(logic[r_select - 1][c_select - 1] == '*')
+                    nearby_mine_count++;
+            }
+        }
+    }
+    // Check if selection is in last row
+    if(r_select == (BOARD_SIZE - 1) && c_select != (BOARD_SIZE - 1))
+    {
+        // Check for mine above
+            if(logic[r_select - 1][c_select] == '*')
+                nearby_mine_count++;
+        // Check for mine diagonal-uright
+            if(logic[r_select - 1][c_select + 1] == '*')
+                nearby_mine_count++;
+    }
+    // Check if selection is in last column
+    if(c_select == (BOARD_SIZE - 1) && r_select != (BOARD_SIZE - 1))
+    {
+        // Check for mine to the left
+            if(logic[r_select][c_select - 1] == '*')
+                nearby_mine_count++;
+        // Check for mine diagonal-dleft
+            if(logic[r_select + 1][c_select - 1] == '*')
+                nearby_mine_count++;
+    }
+    // Check whether selection is last in element
+    if(r_select == (BOARD_SIZE - 1) && c_select == (BOARD_SIZE - 1))
+    {
+        // Check for mine to the left
+            if(logic[r_select][c_select - 1] == '*')
+                nearby_mine_count++;
+        // Check for mine diagonal-dleft
+            if(logic[r_select - 1][c_select - 1] == '*')
+                nearby_mine_count++;
+        // Check for mine above
+            if(logic[r_select - 1][c_select] == '*')
+                nearby_mine_count++;
+    }
+
+    return nearby_mine_count;
+}
+
+void delay(int seconds)
+{
+    int ms = 1000 * seconds;
+
+    clock_t start_time = clock();
+
+    while(clock() < start_time + ms);
+}
+
+
+void main()
+{
+
+    createBoard();
+//printBoard();
+
+//Game loop
+    while(alive == 0)
+    {
+        printBoard();
+        printf("\nInput Position");
+        scanf ("%d %d", &x, &y);
+        MeteCasa();
+        char c = check_for_nearby_mines(x,y);
+        board[x][y] = c;
+        printf("\nBombas : %d",check_for_nearby_mines(x,y));
+    }
+    printBoard();
+
+//Prestige aka Grand Finale
+    for (n = 0; n < 5; n++)
+    {
+        delay(1);
+        printf("\nPerdeu");
+    }
+}

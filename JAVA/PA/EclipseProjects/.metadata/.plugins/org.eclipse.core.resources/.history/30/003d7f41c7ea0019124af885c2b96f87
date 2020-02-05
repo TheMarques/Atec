@@ -1,0 +1,81 @@
+
+public class Tabuleiro {
+
+	private int nLinhas;
+	private int nColunas;
+	private int NUMEROEMLINHA = 4;
+	private Peca[][] tabuleiro;
+	
+	public Tabuleiro(int nLinhas, int nColunas) {
+		this.tabuleiro = new Peca[nLinhas][nColunas];
+	}
+	/*
+	 * Este método é responsável por inserir em todas as posições da matriz tabuleiro a peça VAZIA.
+Este método não tem parâmetros e deverá devolver void, ou seja, nada. Percorra todas as posições do tabuleiro com um ciclo for, e insera a PECA.VAZIA
+*/
+	public void inicializaTabuleiro()
+	{
+		int p = nLinhas;
+		for (Peca[] peca : tabuleiro) 
+		{ 
+		    //Colocar peças vazias
+			tabuleiro[p][p] = Peca.VAZIA;
+			p++;
+		}	
+	}
+	
+	/*
+	 * Este método representa a inserção de uma peça do jogador recebido no primeiro parametro, no coluna cujo numero é recebido no segundo parametro.
+	A peça deverá ficar na primeira posição livre a contar de baixo do tabuleiro, ou seja, na primeira linha VAZIA, a contar do fim.
+	*/
+	public boolean poePeca(Jogador jogador, int nCol)
+	{
+		
+		return false;
+	}
+	 
+	
+	public Peca[][] getTabuleiro() {
+		return tabuleiro;
+	}
+	
+	/*
+	 * Depois de cada jogada este método é chamado para validar se o jogador fez um 4 em Linha, ou seja, se possui 4 peças seguidas, numa qualquer linha do tabuleiro. O método apresenta o parametro peca 
+	 * (do ultimo jogador que jogou) para procurar em todas as linhas da matriz, as 4 peças seguidas iguais à reciba nesse parametro. Caso encontre, o método devolve true, caso contrário devolve false.
+	 */
+	
+	public boolean emLinha(Peca peca)
+	{
+		
+	}
+	
+	public boolean emColuna(Peca peca)
+	{
+		
+	}
+	
+	public boolean emDiagonalDireita(Peca peca)
+	{
+		
+	}
+	
+	public boolean emDiagonalEsquerda(Peca peca)
+	{
+		
+	}
+	
+	public boolean existeVencedor(Peca peca)
+	{
+		
+	}
+	
+	public boolean empate()
+	{
+		
+	}
+
+	public Peca atualizaEstadoJogo(Peca peca)
+	{
+		return peca;
+	}
+}

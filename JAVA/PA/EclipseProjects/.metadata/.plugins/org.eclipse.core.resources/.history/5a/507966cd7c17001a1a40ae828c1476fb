@@ -1,0 +1,46 @@
+
+public class Empregado {
+	private String numeroEmpregado;
+	private String nome;
+	private Genero genero;
+	private double salario;
+	private String departamento;
+	private int numeroFilhos;
+	
+	public String getNumeroEmpregado() {
+		return numeroEmpregado;
+	}
+	public void setNumeroEmpregado(String numeroEmpregado) {
+		this.numeroEmpregado = numeroEmpregado;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public Genero getGenero() {
+		return genero;
+	}
+	public void setGenero(Genero genero) {
+		this.genero = genero;
+	}
+	public double getSalario() {
+		return salario;
+	}
+	public void setSalario(double salario) {
+		this.salario = salario;
+	}
+	public String getDepartamento() {
+		return departamento;
+	}
+	public void setDepartamento(String departamento) {
+		this.departamento = departamento;
+	}
+	public int getNumeroFilhos() {
+		return numeroFilhos;
+	}
+	public void setNumeroFilhos(int numeroFilhos) {
+		this.numeroFilhos = numeroFilhos;
+	}
+}

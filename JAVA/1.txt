@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class HelloWorld{
+
+    static Scanner sc = new Scanner(System.in);
+    static float peso, altura, imc;
+
+    public static void main(String []args){
+        Ler_Peso_Altura();
+        imc = Calcula_IMC(peso, altura);
+        System.out.println("IMC = " + imc);
+        sc.close();
+    }
+     
+    public static void Ler_Peso_Altura(){
+        System.out.print("Qual o Peso? ");
+        peso = sc.nextFloat();
+        System.out.print("Qual a Altura? ");
+        altura = sc.nextFloat();
+    }
+    public static float Calcula_IMC(float p,float a){
+        float imc;
+        imc = p / (a*a);
+        return imc;
+    }
+}

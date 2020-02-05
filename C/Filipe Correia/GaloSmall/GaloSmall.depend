@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1573857955 source:d:\tpsi0919 - diogo marques\c - c++\galosmall\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1574875872 source:d:\tpsi0919 - diogo marques\c\galosmall\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+
+1576185684 source:d:\tpsi0919 - diogo marques\onedrive - atec - academia de formação\c\galosmall\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<time.h>
+

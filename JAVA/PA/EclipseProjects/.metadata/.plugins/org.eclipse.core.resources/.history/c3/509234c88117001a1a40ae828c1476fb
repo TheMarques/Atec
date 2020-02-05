@@ -1,0 +1,10 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		//String numeroEmpregado, String nome, Genero genero, double salario, String departamento, int numeroFilhos)
+		Empregado empregado1 = new Empregado()
+	}
+
+}

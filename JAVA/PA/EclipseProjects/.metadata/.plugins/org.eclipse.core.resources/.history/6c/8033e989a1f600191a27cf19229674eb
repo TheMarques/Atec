@@ -1,0 +1,17 @@
+
+public class ContaBancaria {
+	private String name;
+	private String owner;
+	private double ammount;
+	
+	public ContaBancaria(String n, String o, double a){
+		name = n;
+		owner = o;
+		ammount = a;
+	}
+	
+	public void cashOut(double a)
+	{
+		ammount -= a;
+	}
+}

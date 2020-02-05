@@ -1,0 +1,13 @@
+
+public class Musica implements IPlay {
+	private String titulo;
+	private int ano;
+	private EstiloMusical estilo;
+	private String artista;
+	private double duracao;
+	private String diretorio;
+	
+	public void play() throws IOException{
+		Runtime.getRuntime().exec("cmd /c start " + diretorio + "\\" + titulo);
+	}
+}

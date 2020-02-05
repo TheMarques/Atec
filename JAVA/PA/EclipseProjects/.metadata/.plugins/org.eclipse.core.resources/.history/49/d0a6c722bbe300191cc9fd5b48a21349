@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class Funcao {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int n1;
+		int n2;
+		
+		//Asks for n1 and n2
+		WriteLine("Insert a number: ");
+		n1 = scan.nextInt();
+		WriteLine("Insert a second number: ");
+		n2 = scan.nextInt();
+		WriteLine("\n ");
+		//Display Results
+		WriteLine("The sum of the numbers is : " + sum(n1,n2));
+		WriteLine("The subtraction of the numbers is : " + subtract(n1,n2));
+	}
+	
+	public static void WriteLine(String textToDisplay){
+		System.out.println(textToDisplay);
+	}
+	/*
+	 * Receives n1 and n2 and returns the sum of these numbers
+	 */
+	static int sum(int n1, int n2){
+		return (n1+n2);
+	}
+	//  Receives n1 and n2 and returns the subtraction of these numbers
+	static int subtract(int n1, int n2){
+		return (n1-n2);
+	}
+}

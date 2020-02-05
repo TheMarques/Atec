@@ -1,0 +1,35 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		//String numeroEmpregado, String nome, Genero genero, double salario, String departamento, int numeroFilhos)
+		Empregado empregado1 = new Empregado("01201_2019", "Joao", Genero.MASCULINO, 850.0, "Relacoes Publicas", 0);
+		Empregado empregado2 = new Empregado("01204_2019", "Maria", Genero.FEMININO, 1250.0, "Vendas", 2);
+		Empregado empregado3 = new Empregado("01207_2019", "Nelson", Genero.MASCULINO, 950.0, "Manutencao", 1);
+		Empregado empregado4 = new Empregado("01209_2019", "Andre", Genero.MASCULINO, 2050.0, "Chefia", 3);
+		Empregado empregado5 = new Empregado("01214_2019", "Ines", Genero.FEMININO, 1090.0, "Atendimento", 1);
+		
+		//String nomeDaEmpresa, String nomeDoCEO, double capitalSocial
+		Empresa empresa1 = new Empresa("GlutaoGalatico", "Andre Morais", 129450.050);
+		
+		//String nomeDaEmpresa, double capitalSocial
+		Empresa empresa2 = new Empresa("GarraAmarela" , 1000.0);
+		
+		System.out.println(empresa1.obtemNumTotalEmpresas());
+		
+		empresa1.contrataEmpregado(empregado1);
+		empresa1.contrataEmpregado(empregado2);
+		empresa1.contrataEmpregado(empregado5);
+		
+		empresa2.contrataEmpregado(empregado1);
+		empresa2.contrataEmpregado(empregado2);
+		empresa2.contrataEmpregado(empregado3);
+		empresa2.contrataEmpregado(empregado4);
+		empresa2.contrataEmpregado(empregado5);
+		
+		empresa2.aumentaNumeroDeFilhos(empregado1.getNumeroEmpregado(), 1);
+		
+	}
+
+}

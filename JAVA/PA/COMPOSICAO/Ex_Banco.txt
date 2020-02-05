@@ -1,0 +1,46 @@
+Crie um programa em Java que represente uma pequena aplicação de um banco. Para isso crie as seguintes classes:
+
+1. Classe ContaBancaria
+
+Atributos
+a. número da conta (String)
+b. nome do titular da conta (String)
+c. saldo (double)
+
+Métodos
+a. Construtor
+b. levantaQuantia (double valor)
+c. depositaQuantia (double valor)
+d. getters e setters
+e. toString
+
+Nota: Assuma que as contas são criadas com saldo 0€. Crie apenas um construtor com dois parametros: nConta e nTitular
+
+
+2. Classe Banco
+Atributos
+a. Array do tipo ContaBancaria
+b. nTotalContas (int)
+
+
+Métodos
+a. criaConta(String nome, String nConta)
+b. depositaQuantia(String nConta, double valor)
+c. levantaQuantia(String nConta, double valor)
+d. transfereQuantia(String contaOrigem, String contaDestino, double qta)
+e. toString()
+
+Notas: caso não haja saldo suficiente para levantar ou transferir dinheiro de uma conta, o seu programa não poderá efetuar a operação.
+Ou seja, assuma que neste banco não existem plafonds.
+
+3. Classe TestaAppBanco
+
+Esta deverá ser a classe do método main. Deverá efetuar o seguinte:
+
+1. Criar um banco (objecto do tipo Banco)
+2. Criar três contas bancárias. Note que neste exercicio as contas bancárias devem ser criadas dentro da classe Banco, através do construtor
+    criaConta, que recebe os parametros necessários
+3. Deposite dinheiro nas 3 contas. Imprima o objecto banco para validar os movimentos
+4. Levante dinheiro de uma conta que tenha saldo. De seguida levante uma quantia de uma conta que não tenha saldo. Imprima o objecto banco para validar os movimentos
+5. Efetue algumas transferencias bancárias, umas com saldo na conta de origem e outras sem saldo. Imprima o objecto banco para validar os movimentos
+   

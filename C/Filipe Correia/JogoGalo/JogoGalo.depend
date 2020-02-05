@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1573756340 source:d:\tpsi0919 - diogo marques\c - c++\jogogalo\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+

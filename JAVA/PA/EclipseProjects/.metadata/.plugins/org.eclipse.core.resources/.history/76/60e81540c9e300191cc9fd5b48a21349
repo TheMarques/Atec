@@ -1,0 +1,16 @@
+
+public class TesteAutomovel {
+
+	public static void main(String[] args) {
+
+		Automovel carAtec = new Automovel("Blue", "AA-BB-CC", 5, 0);
+		
+		WriteLine("The plate on atec's car is " + carAtec.plate + " which has " + carAtec.doorNumber + " \n color " + carAtec.paint + " \n km : " + carAtec.km );
+		
+	}
+	
+	public static void WriteLine(String textToDisplay){
+		System.out.println(textToDisplay);
+	}
+
+}

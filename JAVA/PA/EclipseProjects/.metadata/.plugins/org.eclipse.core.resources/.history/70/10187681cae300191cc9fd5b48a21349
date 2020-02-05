@@ -1,0 +1,15 @@
+
+public class TestePessoa {
+
+	public static void main(String[] args) {
+
+		Pessoa pessoa1 = new Pessoa("Diogo", 70.5, 170.4);
+		
+		WriteLine("O meu IMC é " + pessoa1.calculateIMC(pessoa1.weight, pessoa1.height));
+		
+	}
+	
+	public static void WriteLine(String textToDisplay){
+		System.out.println(textToDisplay);
+	}
+}

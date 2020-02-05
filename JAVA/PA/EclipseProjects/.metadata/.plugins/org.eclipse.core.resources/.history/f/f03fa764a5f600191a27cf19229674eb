@@ -1,0 +1,23 @@
+
+public class TestaAppBanco {
+
+	public static void main(String[] args) {
+		
+		Bank bank = new Bank();
+		
+		String[] a = new String[3];
+		a[0] = "00710062";
+		a[1] = "00220073";
+		a[2] = "00630094";
+		
+		bank.createAccount(a[0], "Arthur");
+		bank.createAccount(a[1], "Stella");
+		bank.createAccount(a[2], "Marie");
+		
+		bank.deposit(a[0], 1000);
+		bank.deposit(a[1], 5000);
+		bank.deposit(a[2], 200);
+
+	}
+
+}

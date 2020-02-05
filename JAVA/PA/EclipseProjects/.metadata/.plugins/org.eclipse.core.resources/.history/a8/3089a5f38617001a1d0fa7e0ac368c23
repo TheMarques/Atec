@@ -1,0 +1,74 @@
+import java.util.Arrays;
+
+public class Empresa {
+	private String nomeDaEmpresa;
+	private String nomeDoCEO;
+	private double capitalSocial;
+	private Empregado[] listaDeEmpregados = new Empregado[10];
+	private int numeroTotalDeEmpregados = 0;
+	private int numeroTotalDeEmpresas = 0;
+	
+	public Empresa(String nomeDaEmpresa, String nomeDoCEO, double capitalSocial) {
+		this.nomeDaEmpresa = nomeDaEmpresa;
+		this.nomeDoCEO = nomeDoCEO;
+		this.capitalSocial = capitalSocial;
+		numeroTotalDeEmpresas++;
+	}
+
+	public Empresa(String nomeDaEmpresa, double capitalSocial) {
+		this.nomeDaEmpresa = nomeDaEmpresa;
+		this.capitalSocial = capitalSocial;
+		numeroTotalDeEmpresas++;
+	}
+	
+	public void contrataEmpregado(Empregado emp){
+		if (numeroTotalDeEmpregados < listaDeEmpregados.length){
+			listaDeEmpregados[numeroTotalDeEmpregados++] = emp;
+		}
+	}
+	
+	public int aumentaNumeroDeFilhos(String numEmpregado, int n){
+		for (Empregado emp : listaDeEmpregados){
+			if (numEmpregado.equals(emp.getNumeroEmpregado())){
+				emp.aumentaNumeroDeFilhos(n);
+				return emp.getNumeroDeFilhos();
+			}
+		}
+		System.out.println("Error Code 01");
+		return 0;
+	}
+	
+	public int obtemNumTotalEmpresas(){
+		return numeroTotalDeEmpresas;
+	}
+	
+	public boolean atualizaNumeroDeEmpregado(Empregado emp, String novoNumEmp){
+		for (Empregado e : listaDeEmpregados){
+			if (!e.equals(novoNumEmp)){
+				emp.setNumeroEmpregado(novoNumEmp);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public String listaEmpregados(){
+		String texto = "\nLista de Empregados : \n" + "Numero\tNome\tNumerodeFilhos\tSalario";
+		double totalSalarios = 0;
+		int i;
+		for (i = 0; i < numeroTotalDeEmpregados; i++){
+			texto += "\n" + listaDeEmpregados[i].getNumeroEmpregado() + "\t" + listaDeEmpregados[i].getNome() + "\t" + listaDeEmpregados[i].getNumeroDeFilhos() + "\t" + listaDeEmpregados[i].getSalario();
+			totalSalarios += listaDeEmpregados[i].getSalario();
+		}
+		texto += "\nSoma Salarios: " + totalSalarios;
+		return texto;
+	}
+
+	@Override
+	public String toString() {
+		return "Empresa [nomeDaEmpresa=" + nomeDaEmpresa + ", nomeDoCEO=" + nomeDoCEO + ", capitalSocial="
+				+ capitalSocial + ", listaDeEmpregados=" + Arrays.toString(listaDeEmpregados)
+				+ ", numeroTotalDeEmpregados=" + numeroTotalDeEmpregados + ", numeroTotalDeEmpresas="
+				+ numeroTotalDeEmpresas + "]";
+	}
+}

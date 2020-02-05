@@ -1,0 +1,73 @@
+package atec.flj.mat;
+
+import atec.flj.mat.functions.Mmc;
+
+public class Fraction {
+	
+	private NumberInt numerator;
+	private NumberInt denominator;
+	
+	public Fraction(NumberInt n1, NumberInt n2)
+	{
+		numerator = n1;
+		denominator = n2;
+	}
+	
+	public Fraction sum(Fraction f2)
+	{
+		NumberInt multi = Mmc.minMultiploComun(this.getDenominator(), f2.getDenominator());
+		System.out.println(multi);
+		
+		if (this.getDenominator().getNumber() != f2.getDenominator().getNumber())
+		{
+			// Multi * Denominator
+			NumberInt f1denominator = new NumberInt(this.getDenominator().getNumber() * (multi.getNumber()/this.getDenominator().getNumber()));
+			NumberInt f2denominator = new NumberInt(f2.getDenominator().getNumber() * (multi.getNumber()/f2.getDenominator().getNumber()));
+			
+
+			this.setDenominator(f1denominator);
+			f2.setDenominator(f2denominator);
+		}
+		// Multi * Numerator
+		
+		NumberInt f1numerator = new NumberInt(this.getNumerator().getNumber() * (multi.getNumber() / this.getDenominator().getNumber()));
+		NumberInt f2numerator = new NumberInt(f2.getNumerator().getNumber() * (multi.getNumber() / f2.getDenominator().getNumber()));
+
+		this.setNumerator(f1numerator);
+		f2.setNumerator(f2numerator);
+
+		System.out.println("\n");
+		System.out.println(this);
+		System.out.println(f2);
+		System.out.println("\n");
+		// Sums Functions
+		NumberInt numerator = new NumberInt(this.getNumerator().getNumber() + f2.getNumerator().getNumber());
+		NumberInt denominator = new NumberInt(this.getDenominator().getNumber());
+
+		Fraction f = new Fraction(numerator,denominator);
+		System.out.println(f);
+		return f;
+	}
+	
+	public NumberInt getNumerator(){
+		return numerator;
+	}
+	
+	public void setNumerator(NumberInt numerator)
+	{
+		this.numerator = numerator;
+	}
+	
+	public NumberInt getDenominator(){
+		return denominator;
+	}
+	
+	public void setDenominator(NumberInt denominator)
+	{
+		this.denominator = denominator;
+	}
+
+	public String toString(){
+		return "Numerator " + getNumerator() + ", Denominator " + getDenominator();
+	}
+}

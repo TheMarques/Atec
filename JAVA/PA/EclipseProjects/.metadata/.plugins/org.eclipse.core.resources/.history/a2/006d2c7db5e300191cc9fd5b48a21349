@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class ParOuImpar {
+
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		int num;
+		
+		WriteLine("Introduz um número: ");
+		
+		num = scan.nextInt();
+		
+		if (num % 2 == 0){
+			WriteLine("O número é par.");
+		}
+		else{
+			WriteLine("O número é impar.");
+		}
+		
+		WriteLine(Ola rapaz);
+		scan.close();
+	}
+	
+	public static void WriteLine(String StringToDisplay)
+	{
+		System.out.println(StringToDisplay);
+	}
+
+}

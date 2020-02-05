@@ -1,0 +1,58 @@
+
+public class Product {
+
+	private String name;
+	private int stock;
+	private int minStock;
+	
+	public Product (String name, int stock, int minStock){
+		this.name = name;
+		this.stock = stock;
+		this.minStock = minStock;
+	}
+	
+	public Product(String name){
+		
+	}
+	
+	public Product(){
+		
+	}
+	public String getName(){
+		return name;
+	}
+	
+	public void changeName(String name){
+		this.name = name;
+	}
+	
+	public void changeMinStock(int minStock){
+		this.minStock = minStock;
+	}
+	
+	public int checkStock(){
+		return this.stock;
+	}
+	
+	public void addStock(int quantity){
+		stock += quantity;
+	}
+	
+	public void removeStock(int quantity){
+		stock -= quantity;
+	}
+	
+	public boolean needsReStock(){
+		if (stock < minStock){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public String toString(){
+		String text = "The product " + name + " has " + stock + " units in stock and the minimum stock is " + minStock + "."; 
+		return text;
+	}
+}

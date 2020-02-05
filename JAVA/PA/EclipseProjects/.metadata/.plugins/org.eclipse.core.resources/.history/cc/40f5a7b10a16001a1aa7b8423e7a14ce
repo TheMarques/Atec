@@ -1,0 +1,31 @@
+
+public class Playlist {
+	private String nome;
+	private int capacidade;
+	private String dataCriacao;
+	private Musica[] musicas;
+	private int nrMusicas;
+	
+	public Playlist(String nome, int capacidade, String dataCriacao){
+		this.nome = nome;
+		this.dataCriacao = dataCriacao;
+		musicas = new Musica[capacidade];
+	}
+	
+	public Playlist(){
+		
+	}
+	
+	public void addMusica(Musica musica){
+		musicas[nrMusicas++] = musica;
+	}
+	
+	public String toString(){
+		texto = "A playlist contem : ";
+		
+		for (int i = 0; i < nrMusicas; i++) {
+			
+		}
+		return texto;
+	}
+}

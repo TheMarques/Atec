@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int opcao;
+		String name;
+		String dataCriacao;
+		int capacidade;
+
+		System.out.println("Playlist Creator");
+		System.out.println("\nHow many songs will you add?");
+		capacidade = scan.nextInt();
+		
+		do{
+			System.out.println("\nMenu");
+			System.out.println("\n1- Add Song");
+			System.out.println("\n2- Show Playlist");
+			System.out.println("\nSelect an option");
+			opcao = scan.nextInt();
+			scan.nextLine();
+		}
+	}
+
+}

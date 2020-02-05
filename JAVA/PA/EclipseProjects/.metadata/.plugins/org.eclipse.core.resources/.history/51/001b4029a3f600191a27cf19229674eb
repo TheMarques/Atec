@@ -1,0 +1,19 @@
+
+public class Bank {
+	
+		private ContaBancaria[] contas;
+		private int nContas;
+		
+		public void createAccount(String n, String s)
+		{
+			
+		}
+		
+		public void deposit(String s, double a){
+			
+		}
+		
+		public double cashOut (String s, double a){
+			return a;
+		}
+}

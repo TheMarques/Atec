@@ -1,0 +1,43 @@
+
+public class ContaBancaria {
+	private String serial;
+	private String owner;
+	private double ammount;
+	
+	public ContaBancaria(String s, String o){
+		serial = s;
+		owner = o;
+		ammount = 0;
+	}
+	
+
+	
+	public double cashIn(double a)
+	{	
+		return ammount += a;
+	}
+	public void cashOut(double a)
+	{
+		ammount -= a;
+	}
+	
+	public String getSerial(){
+		return serial;
+	}
+	
+	public void setSerial(String s){
+		serial = s;
+	}
+	
+	public String getOwner(){
+		return owner;
+	}
+	
+	public void setOwner(String o){
+		owner = o;
+	}
+	
+	public String toString(){
+		return "\nThe bank account " + serial + ", is owned by " + owner + ", and currently has " + ammount + "$.";
+	}
+}

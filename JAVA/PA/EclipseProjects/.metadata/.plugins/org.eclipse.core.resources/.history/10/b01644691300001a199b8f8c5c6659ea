@@ -1,0 +1,24 @@
+package atec.flj.mat.functions;
+
+import atec.flj.mat.NumberInt;
+
+public class Mdc {
+	public static NumberInt maxDivisorComum(NumberInt n1, NumberInt n2) {
+
+		// Option 1 with interations
+		int r;
+		do {
+			r = n1.getNumber() % n2.getNumber();
+			n1 = n2;
+			n2.setNumber(r);
+		} while (n2.getNumber() != 0);
+		return n1;
+
+		// Option 2 with if
+		/*
+		 * if (n2.getNumber() == 0){ return n1; } else{ return
+		 * maxDivisorComum(n2, new NumberInt(n1.getNumber() % n2.getNumber()));
+		 * }
+		 */
+	}
+}

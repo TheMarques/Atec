@@ -1,0 +1,24 @@
+
+class Automovel {
+
+	// Attributes
+	String paint;
+	String plate;
+	int doorNumber;
+	double km;
+	
+	// Methods
+	
+	// Construct
+	public Automovel(String pa, String pl, int dNumber, int km){
+		paint = pa;
+		plate = pl;
+		doorNumber = dNumber;
+		km = km;
+	}
+	
+	public static changePaint(String newPaint)
+	{
+		paint = newPaint;
+	}
+}

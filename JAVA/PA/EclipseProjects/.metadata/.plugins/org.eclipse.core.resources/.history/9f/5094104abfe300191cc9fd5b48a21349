@@ -1,0 +1,68 @@
+import java.util.Scanner;
+
+public class Funcao {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int n1;
+		int n2;
+		
+		//Asks for n1 and n2
+		WriteLine("Insert a number: ");
+		n1 = scan.nextInt();
+		WriteLine("Insert a second number: ");
+		n2 = scan.nextInt();
+		WriteLine("");
+
+		scan.close();
+		
+		//Display Results
+		WriteLine("The sum of the numbers is : " + sum(n1,n2));
+		WriteLine("The subtraction of the numbers is : " + subtract(n1,n2));
+		WriteLine("The result of " + n1 + " multiplied by " + n2 + " is : " + multiply(n1,n2));
+		WriteLine("The result of " + n1 + " multiplied by " + n1 + " is : " + multiply(n1,n1));
+		WriteLine("The result of " + n1 + " divided by " + n2 + " is : " + divide(n1,n2));
+		WriteLine("The result of " + n1 + " elevated times " + n2 + " is : " + elevated(n1,n2));
+		WriteLine("The result of " + n1 + " rootsquare by " + n2 + " is : " + rootSquare(n1,n2));
+	}
+	
+	public static void WriteLine(String textToDisplay){
+		System.out.println(textToDisplay);
+	}
+	/*
+	 * Receives n1 and n2 and returns the sum of these numbers
+	 */
+	static int sum(int n1, int n2){
+		return (n1+n2);
+	}
+	//  Receives n1 and n2 and returns the subtraction of these numbers
+	static int subtract(int n1, int n2){
+		return (n1-n2);
+	}
+	//  Receives n1 and n2 and returns the n1 multiplied by n2 times
+	static int multiply(int n1, int n2){
+		return (n1*n2);
+	}
+	//  Receives n1 and n2 and returns the division of the n1 by n2
+	static int divide(int n1 , int n2){
+		return (n1/n2);
+	}
+	//  Receives n1 and n2 and returns the n1 elevated by n2 times
+	static int elevated(int n1 , int n2){
+		int r = n1;
+		for (int i = 0; i < n2 - 1; i++) {
+			r *= n1;
+			WriteLine(String.valueOf(r));
+		}
+		return r;
+	}
+	//  Receives n1 and n2 and returns the n1 elevated by n2 times
+	static int rootSquare(int n1 , int n2){
+		int r = n1;
+		for (int i = 0; i < n2 - 1; i++) {
+			r /= n1;
+			WriteLine(String.valueOf(r));
+		}
+		return r;
+	}
+}

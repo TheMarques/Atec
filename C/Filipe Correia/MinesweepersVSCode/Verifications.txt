@@ -1,0 +1,42 @@
+
+
+	
+	00				03							
+		1	2	3			(-1)(-1)	(-1)(y)		(-1)(+1)
+		4	5	6			(x)(-1)		(x)(y)		(x)(+1)	
+		7	8	9			(+1)(-1)	(+1)(y)		(+1)(+1)
+	30				33
+
+
+
+	Order
+
+	Above + Below
+	Right + Left
+	Diagonal up Right + Diagonal up Left
+	Diagonal down Right + Diagonal down Left
+
+
+
+	if (x = 0)
+	check below
+	check diagonal below
+	check left
+
+
+
+
+
+	00	01	02
+	10	11	12
+	20	21	22
+
+
+
+	Expansion Algorythm
+
+	se Tile nao é bomba entao
+		
+
+
+	
