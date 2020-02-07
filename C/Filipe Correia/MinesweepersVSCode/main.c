@@ -25,8 +25,8 @@ char checkTilesAround(int sizeX, int sizeY, char logic[sizeX][sizeY], int x, int
 {
     int tilesFound = 0;
 
-    if (logic[x][y] == 'M')
-        return 'M';
+    if (logic[x][y] == tile)
+        return tile;
 
     //top left
     if (x == 0 && y == 0)
@@ -187,24 +187,30 @@ char checkTilesAround(int sizeX, int sizeY, char logic[sizeX][sizeY], int x, int
     return m[0];
 }
 
-void floodFill(int sizeX, int sizeY, char logic[sizeX][sizeY], char visual[sizeX][sizeY], int x, int y, char oldTile)
+void floodFill(int sizeX, int sizeY, char logic[sizeX][sizeY], char visual[sizeX][sizeY], int x, int y, char oldtile, char tile)
 {
+
     if (x < 0 || x >= sizeX || y < 0 || y >= sizeY)
         return;
-    if (logic[x][y] != oldTile)
-        return;
-    visual[x][y] = checkTilesAround(sizeX,sizeY,logic,x,y,'M');
-    floodFill(sizeX, sizeY, logic, visual, (x + 1), y, oldTile);
-    floodFill(sizeX, sizeY, logic, visual, (x - 1), y, oldTile);
-    floodFill(sizeX, sizeY, logic, visual, x, (y + 1), oldTile);
-    floodFill(sizeX, sizeY, logic, visual, x, (y - 1), oldTile);
+
+    if(visual[x][y] == '-'){
+        logic[x][y] = checkTilesAround(sizeX, sizeY, logic, x, y, 'M');
+        visual[x][y] = logic[x][y];
+        if (logic[x][y] != oldtile){
+            return;
+        }
+    floodFill(sizeX, sizeY, logic, visual, (x + 1), y, oldtile, tile);
+    floodFill(sizeX, sizeY, logic, visual, (x - 1), y, oldtile, tile);
+    floodFill(sizeX, sizeY, logic, visual, x, (y + 1), oldtile, tile);
+    floodFill(sizeX, sizeY, logic, visual, x, (y - 1), oldtile, tile);
+            }
 }
-/*
-void floodFill(int sizeX, int sizeY, char logic[sizeX][sizeY], char visual[sizeX][sizeY], int x, int y)
-{ 
-    char oldTile = visual[x][y];
-    floodFillUtil(sizeX, sizeY, logic, visual, x, y, oldTile);
-}*/
+
+void floodFillInit(int sizeX, int sizeY, char logic[sizeX][sizeY], char visual[sizeX][sizeY], int x, int y, char tile)
+{
+    char oldtile = '0';
+    floodFill(sizeX, sizeY, logic, visual, x, y, oldtile, tile);
+}
 
 void createBoard(int sizeX, int sizeY, char visual[sizeX][sizeY], char logic[sizeX][sizeY], char fullboard[sizeX][sizeY], int mineNumber)
 {
@@ -281,8 +287,10 @@ int main()
 
     while (alive == 0)
     {
+        printf("\n\tVisual!");
         printBoard(sizeX, sizeY, visual);
         printf("\n");
+        printf("\n\tLogic!");
         printBoard(sizeX, sizeY, logic);
         printf("\nInput");
         scanf("%d %d", &x, &y);
@@ -290,17 +298,14 @@ int main()
         {
             alive = 1;
         }
-        if (logic[x][y] == '-')
+        else
         {
-            floodFill(sizeX, sizeY, logic, visual, x, y, logic[x][y]);
+            logic[x][y] = checkTilesAround(sizeX, sizeY, logic, x, y, 'M');
+            visual[x][y] = logic[x][y];
         }
+        floodFillInit(sizeX, sizeY, logic, visual, x, y, '0');
     }
+    printf("\n");
     printBoard(sizeX, sizeY, fullBoard);
-    //Prestige aka Grand Finale
-    for (n = 0; n < 5; n++)
-    {
-        delay(1);
-        printf("\nPerdeu");
-    }
     return 0;
 }
